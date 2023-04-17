@@ -3,6 +3,8 @@
 
 static const char *termcmd[] = { "urxvt-tabbed",    NULL };
 static const char *menucmd[] = { "dmenu_run",       NULL };
+static const char *screenshot[] = {"ssci", NULL};
+static const char *poweroff [] = {"poweroff", NULL};
 #define SHCMD(cmd) {.com = (const char*[]){"/bin/sh", "-c", cmd, NULL}}
 
 
@@ -34,8 +36,10 @@ static Key keys[] = {
     {  Mod4Mask|ShiftMask,       XK_m,          switch_mode,       {.i = MONOCLE}},
     {  Mod4Mask|ShiftMask,       XK_f,          switch_mode,       {.i = FLOAT}},
     {  Mod4Mask|ShiftMask,       XK_e,          quit,              {.i = 0}},
-    {  Mod4Mask,       XK_Return,     spawn,             {.com = termcmd}},
-    {  Mod4Mask,                 XK_v,          spawn,             {.com = menucmd}},
+    {  Mod4Mask,                 XK_Return,     spawn,             {.com = termcmd}},
+    {  Mod4Mask,                 XK_d,          spawn,             {.com = menucmd}},
+    {  Mod4Mask|ShiftMask,		 XK_p,     	    spawn,      	   {.v = poweroff}},
+	{ 0,				         XK_Print,       spawn,             {.v = screenshot}},
        DESKTOPCHANGE(    XK_1,                             0)
        DESKTOPCHANGE(    XK_2,                             1)
        DESKTOPCHANGE(    XK_3,                             2)
